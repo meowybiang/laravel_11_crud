@@ -1,18 +1,22 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AuthenticationController;
+
+// Public routes
 Route::get('/', function () {
- return view('welcome');
+    return view('welcome');
 });
 
-Route::resource('products', ProductController::class);
+// Authentication routes
+Route::get('/login', [AuthenticationController::class, 'showLogin'])->name('login')->middleware('guest');
+Route::post('/login', [AuthenticationController::class, 'login'])->middleware('guest');
+Route::get('/register', [AuthenticationController::class, 'showRegister'])->name('register')->middleware('guest');
+Route::post('/register', [AuthenticationController::class, 'register'])->middleware('guest');
+Route::post('/logout', [AuthenticationController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('login', [AuthController::class, 'login']);
-
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
+// Protected routes
+Route::middleware('auth')->group(function () {
+    Route::resource('products', ProductController::class);
+});
