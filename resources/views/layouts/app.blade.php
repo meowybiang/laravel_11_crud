@@ -13,8 +13,15 @@ href="https://cdn.jsdelivr.net/npm/bootstrapicons@1.11.1/font/bootstrap-icons.c
 </head>
 <body> 
  <div class="container">
- <h3 class=" mt-3">Simple Laravel 11 CRUD Application 
-Tutorial</h3>
+ <div class="d-flex justify-content-between align-items-center mt-3">
+  <h3>Simple Laravel 11 CRUD Application Tutorial</h3>
+  @auth
+   <form action="{{ route('logout') }}" method="POST" class="d-inline">
+    @csrf
+    <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+   </form>
+  @endauth
+ </div>
  @yield('content')
  <div class="row justify-content-center text-center mt-3">
  <div class="col-md-12">
