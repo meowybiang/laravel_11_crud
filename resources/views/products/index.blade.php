@@ -43,8 +43,7 @@ $product->id) }}" class="btn btn-warning btn-sm"><i class="bi bieye"></i> Show<
  <a href="{{ route('products.edit', 
 $product->id) }}" class="btn btn-primary btn-sm"><i class="bi bipencil-square"></i> Edit</a> 
  <button type="submit" class="btn 
-btn-danger btn-sm" onclick="return confirm('Do you want to delete this 
-product?');"><i class="bi bi-trash"></i> Delete</button>
+btn-danger btn-sm" onclick="return confirm('Do you want to delete this product?');"><i class="bi bi-trash"></i> Delete</button>
  </form>
  </td>
  </tr>

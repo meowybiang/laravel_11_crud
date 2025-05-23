@@ -75,7 +75,6 @@
  </div>
  @endif
  <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/jpeg,image/png,image/gif,image/tiff,image/webp,image/bmp">
- <small class="text-muted">Allowed file types: JPEG, PNG, GIF, TIFF, WebP, BMP. <br> Maximum file size: 50MB</small>
  @error('image')
  <span class="text-danger">{{ $message }}</span>
  @enderror
